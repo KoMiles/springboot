@@ -20,13 +20,7 @@ public class HelloControllerTest {
 
     @Test
     public void test() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
-    @Test
-    public void kongming() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/kongming"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/test"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
