@@ -25,13 +25,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto insertUser(UserParam userParam) {
-        Integer insertId = userMapper.insert(userParam);
-        return findInfoById(insertId);
+        UserParam insertData = new UserParam();
+        insertData.setPassword(userParam.getPassword());
+        insertData.setUsername(userParam.getUsername());
+        userMapper.insert(insertData);
+        return findInfoById(insertData.getId());
     }
 
     @Override
     public UserDto updateUser(UserParam userParam) {
-        userMapper.update(userParam);
+        UserParam updateData = new UserParam();
+        updateData.setId(userParam.getId());
+        updateData.setUsername(userParam.getUsername());
+        updateData.setPassword(userParam.getPassword());
+        userMapper.update(updateData);
         return findInfoById(userParam.getId());
     }
 
