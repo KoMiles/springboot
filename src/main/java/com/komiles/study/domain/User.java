@@ -1,10 +1,10 @@
 package com.komiles.study.domain;
 
+import java.io.Serializable;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Data
-public class User {
+public class User implements Serializable {
     private Integer id;
 
     private String username;

@@ -1,9 +1,10 @@
 package com.komiles.study.entity.dto;
 
+import java.io.Serializable;
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class UserDto implements Serializable {
 
     private int id;
 

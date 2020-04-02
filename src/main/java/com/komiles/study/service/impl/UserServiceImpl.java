@@ -5,6 +5,7 @@ import com.komiles.study.entity.dto.UserDto;
 import com.komiles.study.entity.param.UserParam;
 import com.komiles.study.mapper.UserMapper;
 import com.komiles.study.service.UserService;
+import java.io.Serializable;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
