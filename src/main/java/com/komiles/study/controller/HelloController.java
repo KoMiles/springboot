@@ -1,8 +1,11 @@
 package com.komiles.study.controller;
 
+import com.komiles.study.domain.TestConfig;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,12 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HelloController {
 
-    @GetMapping("/test")
-    public String test(@RequestParam(value = "name", defaultValue = "1234")  String name)
-    {
-        return name+"nihao_hhh_kongming_000";
-    }
+    @Value("${weixin.appId}")
+    private String appId;
 
+    @Value("${weixin.appSecret}")
+    private String appSecret;
+
+    @Autowired
+    private TestConfig testConfig;
+
+
+    @GetMapping("/test")
+    public String test()
+    {
+        return "appId:"+testConfig.getAppId()+",appSecret:" + testConfig.getAppSecret();
+    }
     @GetMapping("/config")
     public void config()
     {
@@ -35,5 +47,7 @@ public class HelloController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         log.info("date:{}",simpleDateFormat.format(date));
     }
+
+
 
 }

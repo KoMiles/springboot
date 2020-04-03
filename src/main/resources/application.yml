@@ -27,3 +27,7 @@ spring:
         max-idle: 8
         max-wait: 1ms
         min-idle: 0
+
+weixin:
+  appId: 123456
+  appSecret: hhahahha

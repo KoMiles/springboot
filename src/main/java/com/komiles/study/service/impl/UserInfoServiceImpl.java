@@ -1,8 +1,12 @@
 package com.komiles.study.service.impl;
 
 import com.komiles.study.domain.UserInfo;
+import com.komiles.study.entity.dto.UserInfoDTO;
 import com.komiles.study.mapper.UserInfoMapper;
 import com.komiles.study.service.UserInfoService;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +21,45 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfo getOne(Long id) {
-        return userInfoMapper.selectByPrimaryKey(id);
+    public UserInfoDTO getOne(Long id) {
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(id);
+        UserInfoDTO userInfoDTO = new UserInfoDTO();
+        BeanUtils.copyProperties(userInfo,userInfoDTO);
+        return userInfoDTO;
+    }
+
+    @Override
+    public UserInfoDTO insertOne(UserInfoDTO userInfoDTO) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setAge(userInfoDTO.getAge());
+        userInfo.setName(userInfoDTO.getName());
+        userInfoMapper.insert(userInfo);
+        return getOne(userInfo.getId());
+    }
+
+    @Override
+    public List<UserInfoDTO> getList() {
+        List<UserInfo> userInfoList = userInfoMapper.selectAll();
+
+        List<UserInfoDTO> userInfoDTOList = userInfoList.stream()
+                .map(e-> new UserInfoDTO(e.getId(),e.getName(),e.getAge()))
+                .collect(Collectors.toList());
+        return userInfoDTOList;
+    }
+
+    @Override
+    public UserInfoDTO updateOne(UserInfoDTO userInfoDTO) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId(userInfoDTO.getId());
+        userInfo.setAge(userInfoDTO.getAge());
+        userInfo.setName(userInfoDTO.getName());
+        userInfoMapper.updateByPrimaryKey(userInfo);
+        return getOne(userInfo.getId());
+    }
+
+    @Override
+    public Boolean delete(Long id) {
+        int deleteId = userInfoMapper.deleteByPrimaryKey(id);
+        return deleteId > 0 ? true : false;
     }
 }
