@@ -50,6 +50,16 @@ public class UserInfoController {
         return pageInfo.getList();
     }
 
+    @GetMapping("getListByPageTest")
+    public List<UserInfoDTO> getListByPageTest(@RequestParam(value = "pageSize") int pageSize,
+            @RequestParam(value = "pageNum") int pageNum)
+    {
+        PageHelper.startPage(pageNum, pageSize);
+        List<UserInfoDTO> userInfoDTOList = userInfoService.getListByPage(pageNum, pageSize);
+        return userInfoDTOList;
+    }
+
+
 
     @PostMapping("/post")
     public UserInfoDTO postUser(@Valid UserInfoParam userInfo, BindingResult bindingResult)

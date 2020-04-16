@@ -18,4 +18,7 @@ public interface UserInfoService {
 
     UserInfoDTO updateOne(UserInfoDTO userInfoDTO);
 
+
+    List<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize);
+
 }
