@@ -1,9 +1,6 @@
 package com.komiles.study.controller;
 
-import com.komiles.study.domain.User;
 import com.komiles.study.entity.dto.UserDto;
-import com.komiles.study.service.UserService;
-import javax.persistence.criteria.CriteriaBuilder.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -28,8 +25,6 @@ public class RedisController {
     @Autowired
     StringRedisTemplate stringRedisTemplate; // 操作字符串的redis实例
 
-    @Autowired
-    UserService userService;
 
     @GetMapping("/setRedis")
     public String setRedis(@RequestParam("name") String name, @RequestParam("value") String value)
@@ -47,16 +42,6 @@ public class RedisController {
         return value;
     }
 
-
-    @GetMapping("/oSetRedis")
-    public UserDto oSetRedis(@RequestParam("id") Integer id)
-    {
-        UserDto user = userService.findInfoById(id);
-
-        ValueOperations operations = redisTemplate.opsForValue();
-        operations.set("user_"+user.getId(),user);
-        return user;
-    }
 
     @GetMapping("/oGetRedis")
     public UserDto oGetRedis(@RequestParam("id") Integer id)

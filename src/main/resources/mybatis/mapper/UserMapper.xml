@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace = "com.komiles.study.mapper.UserMapper">
-
-    <resultMap id = "result" type = "com.komiles.study.domain.User">
-        <result property = "id" column = "id"/>
-        <result property = "username" column = "username"/>
-        <result property = "password" column = "password"/>
-    </resultMap>
-
-<!--    <sql id="Base_Column_List" >-->
-<!--        id, name, studentID-->
-<!--    </sql>-->
-
-<!--    查询-->
-    <select id = "findOne" resultMap = "result">
-        SELECT * FROM t_user WHERE id = #{id}
-    </select>
-
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into t_user(username, password) values (#{username}, #{password})
-    </insert>
-
-    <update id="update">
-        update t_user set username=#{username}, password=#{password} where id = #{id}
-    </update>
-
-    <delete id="delete">
-        delete from t_user where id = #{id}
-    </delete>
-
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.komiles.study.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.komiles.study.domain.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.komiles.study.domain.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_user (username, `password`)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.komiles.study.domain.User">
+    update t_user
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, username, `password`
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, username, `password`
+    from t_user
+  </select>
 </mapper>

@@ -1,14 +1,16 @@
 package com.komiles.study.mapper;
 
 import com.komiles.study.domain.User;
-import com.komiles.study.entity.param.UserParam;
+import java.util.List;
 
 public interface UserMapper {
-    User findOne(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
-    Integer insert(UserParam userParam);
+    int insert(User record);
 
-    void update(UserParam userParam);
+    User selectByPrimaryKey(Integer id);
 
-    Integer delete(UserParam userParam);
+    List<User> selectAll();
+
+    int updateByPrimaryKey(User record);
 }
