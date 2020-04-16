@@ -41,13 +41,13 @@ public class UserInfoController {
     }
 
     @GetMapping("getListByPage")
-    public PageInfo<UserInfoDTO> getListByPage(@RequestParam(value = "pageSize") int pageSize,
+    public List<UserInfoDTO> getListByPage(@RequestParam(value = "pageSize") int pageSize,
             @RequestParam(value = "pageNum") int pageNum)
     {
         PageHelper.startPage(pageNum, pageSize);
         List<UserInfoDTO> userInfoDTOList = userInfoService.getList();
         PageInfo pageInfo = new PageInfo(userInfoDTOList,5);
-        return pageInfo;
+        return pageInfo.getList();
     }
 
 
