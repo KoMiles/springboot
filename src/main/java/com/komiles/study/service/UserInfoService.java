@@ -21,4 +21,5 @@ public interface UserInfoService {
 
     PageDTO<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize);
 
+    PageDTO<UserInfoDTO> getListBySearch(Integer pageNum, Integer pageSize, String orderField, String orderType, String name);
 }

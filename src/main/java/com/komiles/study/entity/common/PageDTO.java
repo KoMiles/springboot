@@ -4,11 +4,13 @@ package com.komiles.study.entity.common;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author komiles@163.com
  * @date 2020-04-28 14:17
  */
+@Accessors(chain = true)
 @Data
 public class PageDTO<T> implements Serializable {
 

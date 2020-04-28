@@ -1,6 +1,7 @@
 package com.komiles.study.mapper;
 
 import com.komiles.study.domain.UserInfo;
+import com.komiles.study.entity.param.UserInfoParam;
 import java.util.List;
 
 public interface UserInfoMapper {
@@ -13,4 +14,6 @@ public interface UserInfoMapper {
     List<UserInfo> selectAll();
 
     int updateByPrimaryKey(UserInfo record);
+
+    List<UserInfo> selectAllBySearch(UserInfoParam userInfoParam);
 }

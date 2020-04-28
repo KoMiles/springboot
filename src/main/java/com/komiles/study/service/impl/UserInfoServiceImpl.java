@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.komiles.study.domain.UserInfo;
 import com.komiles.study.entity.common.PageDTO;
 import com.komiles.study.entity.dto.UserInfoDTO;
+import com.komiles.study.entity.param.UserInfoParam;
 import com.komiles.study.mapper.UserInfoMapper;
 import com.komiles.study.service.UserInfoService;
 import java.util.List;
@@ -53,9 +54,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public PageDTO<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize) {
-
-
         // 分页
+//        String orderStandesc = "id desc ";
         PageHelper.startPage(pageNum, pageSize);
         List<UserInfo> userInfoList = userInfoMapper.selectAll();
 
@@ -70,6 +70,31 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoDTOPageDTO.setPageSize(pageInfo.getPageSize());
         userInfoDTOPageDTO.setTotal(pageInfo.getTotal());
         userInfoDTOPageDTO.setList(pageInfo.getList());
+        return userInfoDTOPageDTO;
+    }
+
+    @Override
+    public PageDTO<UserInfoDTO> getListBySearch(Integer pageNum, Integer pageSize, String orderField,
+            String orderType, String name) {
+
+        UserInfoParam userInfoParam = new UserInfoParam();
+
+        userInfoParam.setOrderField(orderField);
+        userInfoParam.setOrderType(orderType);
+        userInfoParam.setName(name);
+
+        PageHelper.startPage(pageNum, pageSize);
+        List<UserInfo> userInfoList = userInfoMapper.selectAllBySearch(userInfoParam);
+
+        List<UserInfoDTO> userInfoDTOList = userInfoList.stream()
+                .map(e-> new UserInfoDTO(e.getId(),e.getName(),e.getAge()))
+                .collect(Collectors.toList());
+        PageInfo pageInfo = new PageInfo(userInfoDTOList);
+        PageDTO<UserInfoDTO> userInfoDTOPageDTO = new PageDTO<>();
+        userInfoDTOPageDTO.setPageNum(pageInfo.getPageNum())
+                .setPageSize(pageInfo.getPageSize())
+                .setTotal(pageInfo.getTotal())
+                .setList(pageInfo.getList());
         return userInfoDTOPageDTO;
     }
 

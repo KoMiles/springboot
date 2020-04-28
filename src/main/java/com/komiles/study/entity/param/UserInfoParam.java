@@ -12,9 +12,19 @@ public class UserInfoParam {
 
     private Long id;
 
-    @NotNull(message = "名字不能为空")
+//    @NotNull(message = "名字不能为空")
     private String name;
 
-    @NotNull(message = "年龄不能为空")
+//    @NotNull(message = "年龄不能为空")
     private Integer age;
+
+    /**
+     * 排序字段
+     */
+    private String orderField;
+
+    /**
+     * 排序方式 ASC DESC
+     */
+    private String orderType;
 }
