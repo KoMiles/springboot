@@ -1,5 +1,6 @@
 package com.komiles.study.service;
 
+import com.komiles.study.entity.common.PageDTO;
 import com.komiles.study.entity.dto.UserInfoDTO;
 import java.util.List;
 
@@ -18,7 +19,6 @@ public interface UserInfoService {
 
     UserInfoDTO updateOne(UserInfoDTO userInfoDTO);
 
-
-    List<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize);
+    PageDTO<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize);
 
 }

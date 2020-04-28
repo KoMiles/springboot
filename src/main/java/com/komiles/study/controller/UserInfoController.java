@@ -2,6 +2,7 @@ package com.komiles.study.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.komiles.study.entity.common.PageDTO;
 import com.komiles.study.entity.dto.UserInfoDTO;
 import com.komiles.study.entity.param.UserInfoParam;
 import com.komiles.study.service.UserInfoService;
@@ -41,24 +42,11 @@ public class UserInfoController {
     }
 
     @GetMapping("getListByPage")
-    public List<UserInfoDTO> getListByPage(@RequestParam(value = "pageSize") int pageSize,
-            @RequestParam(value = "pageNum") int pageNum)
+    public PageDTO<UserInfoDTO> getListByPage(@RequestParam(value = "limit") Integer limit,
+            @RequestParam(value = "page") Integer page)
     {
-        PageHelper.startPage(pageNum, pageSize);
-        List<UserInfoDTO> userInfoDTOList = userInfoService.getList();
-        PageInfo pageInfo = new PageInfo(userInfoDTOList,5);
-        return pageInfo.getList();
+       return userInfoService.getListByPage(page,limit);
     }
-
-    @GetMapping("getListByPageTest")
-    public List<UserInfoDTO> getListByPageTest(@RequestParam(value = "pageSize") int pageSize,
-            @RequestParam(value = "pageNum") int pageNum)
-    {
-        PageHelper.startPage(pageNum, pageSize);
-        List<UserInfoDTO> userInfoDTOList = userInfoService.getListByPage(pageNum, pageSize);
-        return userInfoDTOList;
-    }
-
 
 
     @PostMapping("/post")

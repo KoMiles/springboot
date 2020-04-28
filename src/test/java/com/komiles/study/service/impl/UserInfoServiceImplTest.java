@@ -33,7 +33,8 @@ class UserInfoServiceImplTest {
         UserInfoDTO userInfoResult = userInfoService.getOne(id);
 
         log.info("用户名:{},年龄:{}", userInfoResult.getName(), userInfoResult.getAge());
-        Assert.assertNotNull(userInfoResult);
+//        Assert.assertNotNull(userInfoResult);
+        Assert.assertEquals(userInfoResult.getAge(),(Integer)19);
     }
 
     @Test

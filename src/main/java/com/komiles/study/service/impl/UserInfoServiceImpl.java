@@ -3,6 +3,7 @@ package com.komiles.study.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.komiles.study.domain.UserInfo;
+import com.komiles.study.entity.common.PageDTO;
 import com.komiles.study.entity.dto.UserInfoDTO;
 import com.komiles.study.mapper.UserInfoMapper;
 import com.komiles.study.service.UserInfoService;
@@ -51,7 +52,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 
     @Override
-    public List<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize) {
+    public PageDTO<UserInfoDTO> getListByPage(Integer pageNum, Integer pageSize) {
+
+
         // 分页
         PageHelper.startPage(pageNum, pageSize);
         List<UserInfo> userInfoList = userInfoMapper.selectAll();
@@ -59,9 +62,15 @@ public class UserInfoServiceImpl implements UserInfoService {
         List<UserInfoDTO> userInfoDTOList = userInfoList.stream()
                 .map(e-> new UserInfoDTO(e.getId(),e.getName(),e.getAge()))
                 .collect(Collectors.toList());
-        PageInfo pageInfo = new PageInfo(userInfoDTOList);
+        PageInfo pageInfo = new PageInfo(userInfoDTOList,5);
 
-        return pageInfo.getList();
+        PageDTO<UserInfoDTO> userInfoDTOPageDTO = new PageDTO<>();
+
+        userInfoDTOPageDTO.setPageNum(pageInfo.getPageNum());
+        userInfoDTOPageDTO.setPageSize(pageInfo.getPageSize());
+        userInfoDTOPageDTO.setTotal(pageInfo.getTotal());
+        userInfoDTOPageDTO.setList(pageInfo.getList());
+        return userInfoDTOPageDTO;
     }
 
     @Override

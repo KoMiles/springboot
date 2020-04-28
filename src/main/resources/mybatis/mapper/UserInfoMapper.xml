@@ -31,5 +31,6 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id, `name`, age
     from user_info
+    order by id desc 
   </select>
 </mapper>
