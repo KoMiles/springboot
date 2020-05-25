@@ -6,9 +6,9 @@ package com.komiles.study.oop.factoryMethod;
  */
 public class CattleAnimal implements Animal {
 
-    public CattleAnimal() {
-        System.out.println("我是牛的构造方法");
-    }
+//    public CattleAnimal() {
+//        System.out.println("我是牛的构造方法");
+//    }
 
     @Override
     public void show() {
