@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * 抽象工厂模式
  * @author komiles@163.com
  * @date 2020-05-25 14:44
  */

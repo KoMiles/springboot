@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
+ * 单例模式
  * @author komiles@163.com
  * @date 2020-05-24 23:05
  */
