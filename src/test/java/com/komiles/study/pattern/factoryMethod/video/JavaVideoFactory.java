@@ -1,4 +1,4 @@
-package com.komiles.study.pattern.factoryMethod;
+package com.komiles.study.pattern.factoryMethod.video;
 
 /**
  * @author komiles@163.com

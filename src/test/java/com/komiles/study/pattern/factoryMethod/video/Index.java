@@ -1,4 +1,4 @@
-package com.komiles.study.pattern.factoryMethod;
+package com.komiles.study.pattern.factoryMethod.video;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,12 +11,14 @@ import org.springframework.test.context.junit4.SpringRunner;
  * 具体工厂类（ConcreteFactory）：提供具体的工厂
  * 抽象产品类（Product）：提供抽象方法供具体产品类实现
  * 具体产品类（ConcreteProduct）：提供具体的产品
+ *
+ * 主要解决：主要解决接口选择的问题。
  * @author komiles@163.com
  * @date 2020-05-24 23:44
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class IndexVideo {
+public class Index {
 
     @Test
     public void testJava()
