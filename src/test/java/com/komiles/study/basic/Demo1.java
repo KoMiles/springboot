@@ -29,4 +29,29 @@ public class Demo1 {
         System.out.println("考试平均分："+avg1);
         System.out.println("调整后的平均分："+result);
     }
+
+    @Test
+    public void index2(){
+        double avg1 = 85.2;
+        int result = (int)avg1;
+        System.out.println("转换后："+result);
+    }
+
+    @Test
+    public void index3(){
+        final String  COMMON_PRE="mafengwo_";
+        System.out.println(COMMON_PRE);
+    }
+
+    @Test
+    public void index4(){
+        int num = 9999;
+        int len = 0;
+        while(num>0 && num<=999999999){
+            num=num/10;
+            System.out.println(num);
+            len++;
+        }
+        System.out.println(len);
+    }
 }
