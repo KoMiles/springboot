@@ -82,4 +82,60 @@ public class Array {
             System.out.println(i);
         }
     }
+
+    @Test
+    public void index6(){
+        int scores[] = new int[]{1,2,3,89,4};
+        Integer newScores[] = new Integer [5];
+        for(int i=0;i<scores.length;i++){
+            newScores[i]= new Integer(scores[i]);
+        }
+
+        Arrays.sort(newScores,Collections.reverseOrder());
+        for (Integer i:newScores
+        ) {
+            System.out.println(i);
+        }
+    }
+
+    @Test
+    public void index7(){
+        String[] hobbies = { "sports", "game", "movie" };
+        Arrays.sort(hobbies);
+        for (String i:hobbies
+        ) {
+            System.out.println(i);
+        }
+    }
+
+    @Test
+    public void index8(){
+//        String[] hobbies = { "sports", "game", "movie" };
+//        System.out.println(Arrays.toString(hobbies));
+
+        // 定义一个字符串数组
+        String[] hobbies = { "sports", "game", "movie" };
+
+        // 使用Arrays类的sort()方法对数组进行排序
+        Arrays.sort(hobbies);
+
+        // 使用Arrays类的toString()方法将数组转换为字符串并输出
+        System.out.println(Arrays.toString(hobbies));
+    }
+
+    @Test
+    public void index9(){
+        // 定义两行三列的二维数组并赋值
+        String[][] names={{"tom","jack","mike"},{"zhangsan","lisi","wangwu"}};
+
+        // 通过二重循环输出二维数组中元素的值
+        for (int i = 0; i < names.length    ; i++) {
+
+            for (int j = 0; j < names[i].length; j++) {
+
+                System.out.println(names[i][j]);
+            }
+        }
+            System.out.println("\n");
+    }
 }
