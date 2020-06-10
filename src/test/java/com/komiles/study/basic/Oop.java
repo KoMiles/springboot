@@ -26,14 +26,13 @@ public class Oop {
     public int getMaxAge()
     {
         int ages[] = {18 ,23 ,21 ,19 ,25 ,29 ,17};
-
-        Arrays.sort(ages);
-
-
-//        for (int age:ages){
-//            System.out.println(age);
-//        }
-        return ages[ages.length-1];
+        int max = ages[0];
+        for(int i = 1;i<ages.length;i++){
+            if(ages[i]>max){
+                max = ages[i];
+            }
+        }
+        return max;
     }
 
     @Test
@@ -76,5 +75,32 @@ public class Oop {
         Integer ages[] = {18 ,23 ,21 ,19 ,25 ,29 ,17};
         int maxNum = Collections.max(Arrays.asList(ages));
         System.out.println("最大值为："+ maxNum);
+    }
+
+    /**
+     * 方法重载
+     */
+    @Test
+    public void index5(){
+        show();
+        show("kongming");
+        show("kongming",20);
+        show(22,"kongming");
+    }
+
+    public void show(){
+        System.out.println("welcome");
+    }
+
+    public void show(String name){
+        System.out.println("welcome"+name);
+    }
+
+    public void show(String name,int age){
+        System.out.println("welcome"+name+"age:"+age);
+    }
+
+    public void show(int age, String name){
+        System.out.println("welcome2"+name+"age2:"+age);
     }
 }
