@@ -103,4 +103,66 @@ public class Oop {
     public void show(int age, String name){
         System.out.println("welcome2"+name+"age2:"+age);
     }
+
+    @Test
+    public void index6(){
+        int numList[] = new int[5];
+
+        for(int i=0;i<numList.length;i++){
+            numList[i] =(int)(Math.random()*100);
+        }
+
+        System.out.println(Arrays.toString(numList));
+    }
+
+
+    @Test
+    public void index7(){
+        // 创建对象，对象名为hello
+        Oop hello = new Oop();
+
+        // 调用方法并将返回值保存在变量中
+        int[] nums = hello.getArray(8);
+
+        // 将数组转换为字符串并输出
+        System.out.println(Arrays.toString(nums));
+    }
+
+    public int[] getArray(int length) {
+        // 定义指定长度的整型数组
+        int[] nums = new int[length];
+
+        // 循环遍历数组赋值
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = (int) (Math.random() * 100);
+            // 产生一个100以内的随机数，并赋值给数组的每个成员
+
+        }
+        return nums;
+    }
+
+
+    @Test
+    public void index8(){
+        int scores[] = { 89 , -23 , 64 , 91 , 119 , 52 , 73};
+        Oop hello = new Oop();
+        System.out.println("考试成绩的前3名为：")  ;
+        hello.paiMing(scores);
+    }
+
+    public int[] paiMing(int[] numList){
+       Arrays.sort(numList);
+       int num = 0;
+       for(int i=numList.length-1;i>=0;i--){
+           if(numList[i]<0 || numList[i]>100) {
+                continue;
+           }
+           num++;
+            if(num>3) {
+                break;
+            }
+           System.out.println(numList[i]);
+       }
+       return numList;
+    }
 }
