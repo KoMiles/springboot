@@ -1,5 +1,6 @@
 package com.komiles.study.basic2;
 
+import com.komiles.study.basic2.InnerTest.Inner;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,9 +19,7 @@ public class Test {
         person2.show();
 
         Person2 person3 = new Person2();
-
     }
-
 }
 
 

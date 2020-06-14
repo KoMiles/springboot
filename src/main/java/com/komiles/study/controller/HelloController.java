@@ -1,6 +1,8 @@
 package com.komiles.study.controller;
 
 import com.komiles.study.domain.TestConfig;
+import com.komiles.study.test.Hello;
+import com.komiles.study.test.Hello.Inner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +48,14 @@ public class HelloController {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         log.info("date:{}",simpleDateFormat.format(date));
+    }
+
+
+    @GetMapping("/inner")
+    public void inner(){
+        Hello hello = new Hello();
+        Inner inner = hello.new Inner();
+        inner.show();
     }
 
 
