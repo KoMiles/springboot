@@ -1,8 +1,9 @@
-package com.komiles.study.test;
+package com.komiles.study.test.InnerClass;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ *
  * @author komiles@163.com
  * @date 2020-06-14 23:56
  */

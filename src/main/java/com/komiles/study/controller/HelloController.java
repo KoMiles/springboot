@@ -1,8 +1,8 @@
 package com.komiles.study.controller;
 
 import com.komiles.study.domain.TestConfig;
-import com.komiles.study.test.Hello;
-import com.komiles.study.test.Hello.Inner;
+import com.komiles.study.test.InnerClass.Hello;
+import com.komiles.study.test.InnerClass.Hello.Inner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
