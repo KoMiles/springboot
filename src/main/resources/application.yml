@@ -31,3 +31,9 @@ spring:
 weixin:
   appId: 123456
   appSecret: hhahahha
+
+
+
+mafengwo:
+  appId: 888888
+  appSecret: ppppppppp
