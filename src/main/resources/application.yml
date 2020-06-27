@@ -1,7 +1,5 @@
 server:
   port: 8090
-  servlet:
-    context-path: /springboot
 
 mybatis:
   # 对应实体类的包名

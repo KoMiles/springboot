@@ -57,6 +57,12 @@ public class HelloController {
         inner.show();
     }
 
+    @GetMapping("/string")
+    public String string(){
+        //定义字符串
+        String hobby = new String("爱慕课");
+        String url = new String("www.imooc.com");
 
-
+        return url+hobby;
+    }
 }
