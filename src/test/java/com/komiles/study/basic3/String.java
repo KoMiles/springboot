@@ -12,10 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class String {
-
-
     @Test
     public void index(){
-
+        System.out.println("123");
     }
 }

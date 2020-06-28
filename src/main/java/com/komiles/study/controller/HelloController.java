@@ -59,10 +59,30 @@ public class HelloController {
 
     @GetMapping("/string")
     public String string(){
-        //定义字符串
-        String hobby = new String("爱慕课");
-        String url = new String("www.imooc.com");
+        // Java文件名
+        String fileName = "HelloWorld.java";
+        // 邮箱
+        String email = "laurenyang@imooc.com";
 
-        return url+hobby;
+        // 判断.java文件名是否正确：合法的文件名应该以.java结尾
+        /*
+        参考步骤：
+        1、获取文件名中最后一次出现"."号的位置
+        2、根据"."号的位置，获取文件的后缀
+        3、判断"."号位置及文件后缀名
+        */
+        //获取文件名中最后一次出现"."号的位置
+        int index = fileName.lastIndexOf(".");
+
+        // 获取文件的后缀
+        String prefix = fileName.substring(index);
+
+        // 判断必须包含"."号，且不能出现在首位，同时后缀名为"java"
+        if ( index!=-1 && index!=0 &&  prefix.equals("java") ) {
+            System.out.println("Java文件名正确");
+        } else {
+            System.out.println("Java文件名无效");
+        }
+        return "123";
     }
 }
