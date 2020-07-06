@@ -16,6 +16,6 @@ public class String {
 
     @Test
     public void index(){
-
+        System.out.println("index");
     }
 }
