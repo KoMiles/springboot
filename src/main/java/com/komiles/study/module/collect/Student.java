@@ -1,6 +1,7 @@
 package com.komiles.study.module.collect;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -44,5 +45,22 @@ public class Student {
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Student)) {
+            return false;
+        }
+        Student student = (Student) object;
+        return name.equals(student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

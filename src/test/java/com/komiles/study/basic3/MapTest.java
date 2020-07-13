@@ -56,4 +56,45 @@ public class MapTest {
             System.out.println("id:"+st.getId()+" name:"+st.getName());
         }
     }
+
+
+    /**
+     * 通过某一个key或者value，查询HashMap中的值
+     */
+    @Test
+    public void index2(){
+        Map<java.lang.String, Student> studentHashMap = new HashMap<>();
+
+        Student student1 = new Student("1","张三");
+        studentHashMap.put(student1.getId(),student1);
+
+        Student student2 = new Student("2","李四");
+        studentHashMap.put(student2.getId(),student2);
+
+        Student student3 = new Student("3","小明");
+        studentHashMap.put(student3.getId(),student3);
+
+        // 通过key查询
+//        Boolean keyIsExist = studentHashMap.containsKey("2");
+//        if(keyIsExist) {
+//            Student st = studentHashMap.get("2");
+//            System.out.println("对应的学生：id:"+st.getId()+" name:"+st.getName());
+//        }
+
+        // 通过value查询
+        Boolean keyIsExist = studentHashMap.containsValue(new Student(null,"小明"));
+        if(keyIsExist) {
+//            Student st = studentHashMap.get("2");
+            System.out.println("查到对应的学生");
+        } else {
+            System.out.println("不存在同学");
+        }
+
+        // 取出所有的value
+        for (java.lang.String key: studentHashMap.keySet()
+        ) {
+            Student st = studentHashMap.get(key);
+            System.out.println("id:"+st.getId()+" name:"+st.getName());
+        }
+    }
 }

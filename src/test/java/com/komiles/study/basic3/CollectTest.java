@@ -65,7 +65,12 @@ public class CollectTest {
 //
 //        delete(coursesToSelect);
 //        delete2(coursesToSelect);
-        delete3(coursesToSelect);
+//        delete3(coursesToSelect);
+
+        Course data = new Course("3","英语");
+        Boolean rs = coursesToSelect.contains(data);
+        System.out.println("包含对象："+rs+"name:"+data.getName()+"索引位置："+coursesToSelect.indexOf(data));
+
     }
 
     private void print1(List coursesToSelect){
