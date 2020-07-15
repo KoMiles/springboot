@@ -1,0 +1,29 @@
+CREATE TABLE `luckymoney` (
+  `id` int(11) NOT NULL,
+  `consumer` varchar(255) DEFAULT NULL,
+  `money` decimal(5,2) DEFAULT NULL,
+  `producer` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `studentID` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `studentID` (`studentID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `username` varchar(128) NOT NULL COMMENT '用户名',
+  `password` varchar(64) NOT NULL COMMENT '密码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+CREATE TABLE `user_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `age` int(11) DEFAULT NULL COMMENT '年龄',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
