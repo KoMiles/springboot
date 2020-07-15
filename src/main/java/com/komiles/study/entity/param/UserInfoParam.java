@@ -1,5 +1,6 @@
 package com.komiles.study.entity.param;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -13,9 +14,11 @@ public class UserInfoParam {
     private Long id;
 
 //    @NotNull(message = "名字不能为空")
+    @JsonProperty("user_name")
     private String name;
 
 //    @NotNull(message = "年龄不能为空")
+//    @JSONField(name = "user_age")
     private Integer age;
 
     /**
