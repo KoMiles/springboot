@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,6 +61,13 @@ public class UserInfoController {
         userInfoDTO.setName(userInfo.getName());
         log.info("userDTO:{}",userInfoDTO);
         return userInfoService.insertOne(userInfoDTO);
+    }
+
+    @PostMapping("/postTest")
+    public UserInfoParam postUserTest(@RequestBody UserInfoParam userInfoParam)
+    {
+        log.info("user_name:{},user_age:{}",userInfoParam.getName(),userInfoParam.getAge());
+        return userInfoParam;
     }
 
     @PostMapping("/update")
