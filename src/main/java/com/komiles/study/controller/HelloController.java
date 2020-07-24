@@ -4,8 +4,12 @@ import com.komiles.study.domain.TestConfig;
 import com.komiles.study.test.InnerClass.Hello;
 import com.komiles.study.test.InnerClass.Hello.Inner;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.StringJoiner;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -148,5 +152,38 @@ public class HelloController {
 
         // 将StringBuilder对象转换为String对象并输出
         System.out.print(str.toString());
+    }
+
+    @GetMapping("/array")
+    public String arrayList(){
+
+        ArrayList<String> idList = new ArrayList<String>();
+        idList.add("2002");
+        idList.add("2003");
+
+
+//        ArrayList<Integer> idList = new ArrayList<Integer>();
+//        idList.add(2003);
+//        idList.add(2003);
+
+
+//        StringJoiner joiner = new StringJoiner(",");
+//        for (Integer cs: idList) {
+//            joiner.add(cs.toString());
+//        }
+
+//        List<Integer> resList = Arrays.asList(idList);
+
+//        List<String> idList = Arrays.asList("1","2","3","4","5");
+//        List<Integer> resList = Arrays.asList(idList);
+//        String res = String.join(",",idList);
+//        String res =    idList.stream().collect(Collectors.joining(","));
+//        String res = String.join(",",idList);
+        String res = StringUtils.join(idList,",");
+        log.info("idList is {}",res);
+
+        return "123";
+
+
     }
 }
