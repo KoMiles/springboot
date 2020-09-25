@@ -1,13 +1,19 @@
 package com.komiles.study.controller;
 
+import com.komiles.study.domain.Customer;
 import com.komiles.study.domain.TestConfig;
 import com.komiles.study.test.InnerClass.Hello;
 import com.komiles.study.test.InnerClass.Hello.Inner;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -183,7 +189,81 @@ public class HelloController {
         log.info("idList is {}",res);
 
         return "123";
-
-
     }
+
+    @GetMapping("testArr2")
+    public void arrayList2(){
+        List<String> items =
+                Arrays.asList("apple", "apple", "banana",
+                        "apple", "orange", "banana", "papaya");
+        Map<String, Long> result =
+                items.stream().collect(
+                        Collectors.groupingBy(
+                                Function.identity(), Collectors.counting()
+                        )
+                );
+
+        System.out.println(result);
+    }
+
+    @GetMapping("/testArr3")
+    public Map<String, List<Double>>  arrayList3(){
+        Customer custa = new Customer("A",1000,1500);
+        Customer custa1 = new Customer("A",2000,2500);
+        Customer custb = new Customer("B",3000,3500);
+        Customer custc = new Customer("C",4000,4500);
+        Customer custa2 = new Customer("A",1500,2500);
+
+        List<Customer> listCust = new ArrayList<>();
+        listCust.add(custa);
+        listCust.add(custa1);
+        listCust.add(custb);
+        listCust.add(custc);
+        listCust.add(custa2);
+
+        Collector<Customer, List<Double>, List<Double>> collector = Collector.of(
+                () -> Arrays.asList(0.0, 0.0),
+                (a, t) -> {
+                    a.set(0, a.get(0) + t.getTotal());
+                    a.set(1, a.get(1) + t.getBalance());
+                },
+                (a, b) -> {
+                    a.set(0, a.get(0) + b.get(0));
+                    a.set(1, a.get(1) + b.get(1));
+                    return a;
+                }
+        );
+
+        Map<String, List<Double>> retObj = listCust
+                .stream()
+                .collect(Collectors.groupingBy(Customer::getName, collector));
+
+        return retObj;
+    }
+
+
+
+    @GetMapping("/testArr4")
+    public Map<String, Customer>  arrayList4(){
+        Customer custa = new Customer("A",1000,1500);
+        Customer custa1 = new Customer("A",2000,2500);
+        Customer custb = new Customer("B",3000,3500);
+        Customer custc = new Customer("C",4000,4500);
+        Customer custa2 = new Customer("A",1500,2500);
+
+        List<Customer> listCust = new ArrayList<>();
+        listCust.add(custa);
+        listCust.add(custa1);
+        listCust.add(custb);
+        listCust.add(custc);
+        listCust.add(custa2);
+
+        Map<String, Customer> retObj =
+                listCust.stream()
+                        .collect(Collectors.toMap(Customer::getName, Function.identity(), Customer::merge));
+
+        return retObj;
+    }
+
+
 }
